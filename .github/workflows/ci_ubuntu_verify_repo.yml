@@ -1,0 +1,38 @@
+name: CI ubuntu verify repo
+'on':
+  workflow_call: null
+jobs:
+  regeneration_is_clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v4
+      - name: Regenerate Packages
+        run: dpkg-scanpackages --multiversion . > Packages
+        working-directory: ./ubuntu/
+      - name: Verify Packages is up to date
+        run: git diff --exit-code
+        working-directory: ./ubuntu/
+      - name: Regenerate Packages.gz
+        run: gzip -k -f Packages --no-name
+        working-directory: ./ubuntu/
+      - name: Verify Packages.gz is up to date
+        run: git diff --exit-code
+        working-directory: ./ubuntu/
+      - name: Verify sha512 sums in the Release file except for itself
+        run: |
+          awk '/^SHA512:/ {flag=1; next} /^$/ {flag=0} flag && $3 != "Release" {print}' Release | while read -r checksum size file; do
+            if [ "$(sha512sum "$file" | awk '{print $1}')" != "$checksum" ]; then
+              exit 1
+            fi
+          done
+        working-directory: ./ubuntu/
+      - name: Try to import the pubkey
+        run: gpg --import burfeind_jan-niklas.gpg
+        working-directory: ./ubuntu/
+      - name: Verify Release.gpg
+        run: gpg --verify Release.gpg Release
+        working-directory: ./ubuntu/
+      - name: Verify InRelease
+        run: gpg --verify InRelease
+        working-directory: ./ubuntu/
