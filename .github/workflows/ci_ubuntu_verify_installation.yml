@@ -1,9 +1,41 @@
-name: CI ubuntu verify installation 
+name: CI ubuntu verify installation
 'on':
   workflow_call: null
 jobs:
+  fetch_installations:
+    runs-on: ubuntu-latest
+    outputs:
+      cm_versions: ${{ steps.extract-versions.outputs.cm_versions }}
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v4
+      - name: Provide the repo locally via http
+        run: nohup python3 -m http.server 8080 &
+        working-directory: ./ubuntu/
+      - name: Install maintainer publickey
+        run: curl -s --compressed http://localhost:8080/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
+      - name: Add local repo to APT sources
+        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
+      - name: update apt
+        run: sudo apt-get update
+      - name: Get available versions of c-lite
+        id: get_versions
+        run: |
+          apt-cache madison codemeter-lite | grep "http://localhost:8080" | awk '{print $3}' > versions.txt
+          cat versions.txt
+      - name: Kill the webserver again
+        run: sudo pkill python3
+      - name: Extract lines from versions.txt
+        id: extract-versions
+        run: |
+          versions=$(cat versions.txt | jq -R -s -c 'split("\n") | map(select(. != ""))')
+          echo "cm_versions=$versions" >> $GITHUB_OUTPUT
   package_is_installable:
     runs-on: ubuntu-latest
+    needs: fetch_installations
+    strategy:
+      matrix:
+        version: ${{ fromJson(needs.fetch_installations.outputs.cm_versions) }}
     steps:
       - name: Checkout (GitHub)
         uses: actions/checkout@v4
@@ -16,8 +48,8 @@ jobs:
         run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
       - name: Update apt
         run: sudo apt-get update
-      - name: Install codemeter-lite
-        run: sudo apt-get install -y codemeter-lite
+      - name: Install codemeter-lite in version ${{ matrix.version }}
+        run: sudo apt-get install -y codemeter-lite=${{ matrix.version }}
       - name: Kill the webserver again
         run: sudo pkill python3
       - name: Codemeter is running
