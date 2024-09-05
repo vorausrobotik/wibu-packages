@@ -56,3 +56,5 @@ jobs:
         run: systemctl status codemeter
       - name: Codemeter version output is expected
         run: cmu --version | grep -q '${{ matrix.version }}'
+      - name: Verify codemeter service is running as daemon user
+        run: systemctl show -pUser codemeter.service | grep -qx User=daemon
