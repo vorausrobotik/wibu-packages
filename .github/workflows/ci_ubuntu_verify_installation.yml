@@ -1,0 +1,24 @@
+name: CI ubuntu verify installation 
+'on':
+  workflow_call: null
+jobs:
+  package_is_installable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v4
+      - name: Provide the repo locally via http
+        run: nohup python3 -m http.server 8080 &
+        working-directory: ./ubuntu/
+      - name: Install maintainer publickey
+        run: curl -s --compressed http://localhost:8080/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
+      - name: Add local repo to APT sources
+        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
+      - name: Update apt
+        run: sudo apt-get update
+      - name: Install codemeter-lite
+        run: sudo apt-get install -y codemeter-lite
+      - name: Kill the webserver again
+        run: sudo pkill python3
+      - name: Codemeter is running
+        run: systemctl status codemeter

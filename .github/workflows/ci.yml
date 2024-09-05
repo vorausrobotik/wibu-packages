@@ -7,3 +7,5 @@ name: CI
 jobs:
   ubuntu_verify_repo:
     uses: ./.github/workflows/ci_ubuntu_verify_repo.yml
+  ubuntu_verify_installation:
+    uses: ./.github/workflows/ci_ubuntu_verify_installation.yml
