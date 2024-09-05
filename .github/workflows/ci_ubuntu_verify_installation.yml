@@ -54,3 +54,5 @@ jobs:
         run: sudo pkill python3
       - name: Codemeter is running
         run: systemctl status codemeter
+      - name: Codemeter version output is expected
+        run: cmu --version | grep -q '${{ matrix.version }}'
