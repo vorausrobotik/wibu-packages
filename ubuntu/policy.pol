@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE Policy SYSTEM "http://www.debian.org/debsig/1.0/policy.dtd">
+<Policy xmlns="https://www.debian.org/debsig/1.0/">
+
+  <Origin Name="codemeter" id="5FCB7Ab40CC62A25" Description="CodeMeter"/>
+
+  <Selection>
+    <Required Type="origin" File="debsig.gpg" id="5FCB7AB40CC62A25"/>
+  </Selection>
+
+   <Verification MinOptional="0">
+    <Required Type="origin" File="debsig.gpg" id="5FCB7AB40CC62A25"/>
+   </Verification>
+</Policy>
