@@ -2,6 +2,31 @@ name: CI ubuntu verify repo
 'on':
   workflow_call: null
 jobs:
+  wibu-signed-deb-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v4
+      - name: Install debsig-verify
+        run: |
+          sudo apt update
+          sudo apt install -y debsig-verify
+      - name: Create debsig directory structures
+        run: |
+          sudo mkdir -p /etc/debsig/policies/5FCB7AB40CC62A25
+          sudo mkdir -p /usr/share/debsig/keyrings/5FCB7AB40CC62A25
+      - name: Install the debsig policy file
+        run: sudo cp policy.pol /etc/debsig/policies/5FCB7AB40CC62A25/
+        working-directory: ubuntu/
+      - name: Dearmor WIBU pubkey
+        run: gpg -o wibu_pub_dearmored.gpg --dearmor wibu_pub.gpg
+        working-directory: ubuntu/
+      - name: Install dearmored key
+        run: sudo cp wibu_pub_dearmored.gpg /usr/share/debsig/keyrings/5FCB7AB40CC62A25/debsig.gpg
+        working-directory: ubuntu/
+      - name: Verify WIBU systems signed all deb files
+        run: for i in ./*.deb; do debsig-verify "$i"; done
+        working-directory: ./ubuntu/
   regeneration_is_clean:
     runs-on: ubuntu-latest
     steps:
