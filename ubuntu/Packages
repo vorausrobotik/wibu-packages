@@ -98,3 +98,28 @@ Description: WIBU CodeMeter minimal runtime
  More information is available in the README file.
  Please send bugreports or comments to support@wibu.com.
 
+Package: codemeter-lite
+Source: codemeter
+Version: 8.10.6237.502
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 43775
+Depends: libc6 (>= 2.27), libgcc1 (>= 1:4.2), libusb-1.0-0 (>= 2:1.0.9), zlib1g (>= 1:1.1.4), lsb-base (>= 3.0-6), procps
+Recommends: udev
+Conflicts: codemeter, codemeter64, codemeter64-lite
+Replaces: codemeter, codemeter64, codemeter64-lite
+Provides: codemeter64-lite
+Filename: ./codemeter-lite_8.10.6237.502_amd64.deb
+Size: 20849538
+MD5sum: 64800609ee4e442fc478664d6088f76e
+SHA1: bc05459afa1dbcdf690f1d809605f34ea17be290
+SHA256: 2fcf37b2e60dba4d765a5daa293f42d4b18ec4a19bff1f0975cf1c691ca568b9
+Section: non-free/misc
+Priority: extra
+Description: WIBU CodeMeter minimal runtime
+ This package contains the CodeMeter minimal Runtime (codemeter).
+ CodeMeter provides software protection and license management.
+ .
+ More information is available in the README file.
+ Please send bugreports or comments to support@wibu.com.
+
