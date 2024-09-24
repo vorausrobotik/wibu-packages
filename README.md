@@ -1,12 +1,11 @@
 # wibu-packages
 
-This repository is a first approach to provide wibu customer runtimes in
-package manager friendly manner.
+This repository provides WIBU customer runtimes in linux package manager friendly manner.
 
 The software belongs to and is developed by [WIBU-SYSTEMS AG](https://www.wibu.com) and can be downloaded on their
 [website](https://www.wibu.com/de/support/anwendersoftware/anwendersoftware.html) as well.
 
-WIBU-SYSTEMS AG allows us to redistribute the runtimes for you,
+WIBU-SYSTEMS AG allows voraus robotik GmbH to redistribute the runtimes for you,
 our customers, free of charge[^KB-0336].
 
 ## Development deployment
