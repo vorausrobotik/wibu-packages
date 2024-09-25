@@ -12,15 +12,15 @@ jobs:
       cm_versions: ${{ steps.extract-versions.outputs.cm_versions }}
     steps:
       - name: Install maintainer publickey
-        run: curl -s --compressed https://vorausrobotik.github.io/wibu-packages/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
+        run: curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
       - name: Add local repo to APT sources
-        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://vorausrobotik.github.io/wibu-packages/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
+        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
       - name: update apt
         run: sudo apt-get update
       - name: Get available versions of c-lite
         id: get_versions
         run: |
-          apt-cache madison codemeter-lite | grep "https://vorausrobotik.github.io/wibu-packages/ubuntu" | awk '{print $3}' > versions.txt
+          apt-cache madison codemeter-lite | grep "https://wibu-packages.vorausrobotik.com/ubuntu" | awk '{print $3}' > versions.txt
           cat versions.txt
       - name: Extract lines from versions.txt
         id: extract-versions
@@ -35,9 +35,9 @@ jobs:
         version: ${{ fromJson(needs.fetch_installations_externally.outputs.cm_versions) }}
     steps:
       - name: Install maintainer publickey
-        run: curl -s --compressed https://vorausrobotik.github.io/wibu-packages/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
+        run: curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
       - name: Add local repo to APT sources
-        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://vorausrobotik.github.io/wibu-packages/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
+        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
       - name: Update apt
         run: sudo apt-get update
       - name: Install codemeter-lite in version ${{ matrix.version }}
