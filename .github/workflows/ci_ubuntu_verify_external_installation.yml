@@ -3,6 +3,8 @@ name: CI ubuntu verify external installation
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 * * * *'
 jobs:
   fetch_installations_externally:
     runs-on: ubuntu-latest
