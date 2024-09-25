@@ -14,7 +14,7 @@ our customers, free of charge[^KB-0336].
 > While the repo itself (folder structure, CI, ...) is licensed as MIT, the packages themselves are **NOT**.
 > The license conditions of WIBU-SYSTEMS AG apply to these packages.
 
-As stated above, the packages are property WIBU-SYSTEMS AG. We were only allowed to redistribute them.
+As stated above, the packages are property of WIBU-SYSTEMS AG. We are only allowed to redistribute them.
 Their license is contained within the packages itself and is not affected by the MIT license of the rest of this repository.
 
 ## Development deployment
