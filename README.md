@@ -8,6 +8,28 @@ The software belongs to and is developed by [WIBU-SYSTEMS AG](https://www.wibu.c
 WIBU-SYSTEMS AG allows voraus robotik GmbH to redistribute the runtimes for you,
 our customers, free of charge[^KB-0336].
 
+## Usage
+
+At first the maintainers publickey should be installed as trusted for `apt` packages like this:
+
+```console
+curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg > /dev/null
+```
+
+Afterwards this repo can be added to the `apt` package sources:
+
+```console
+echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
+```
+
+At this point the package manager can update its sources and be used to install e.g. `codemeter-lite`.
+```console
+sudo apt update
+sudo apt install codemeter-lite
+```
+
+From this point on the package receives updates upon regular `apt upgrade` calls.
+
 ## License
 
 > [!CAUTION]
