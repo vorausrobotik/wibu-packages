@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>voraus wibu-packages</title>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .step {
+            margin-bottom: 40px;
+        }
+        .step h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .code-terminal {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+            max-width: 540px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .code-line {
+            margin: 5px 0;
+        }
+        .prompt {
+            color: #50fa7b;
+            user-select: none;
+        }
+        footer {
+            color: #6C6C6C;
+            margin-top: 25px;
+            padding: 20px;
+            font-size: 1rem;
+        }
+        footer a {
+            color: #6C6C6C;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>voraus wibu-packages</h1>
+        <p>This package repository provides WIBU customer runtimes in linux package manager friendly manner.</p>
+        <div class="step">
+            <h2>Step 1: Install the maintainers signing key</h2>
+            <div class="code-terminal">
+                <div class="code-line"><span class="prompt">$ </span>curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg > /dev/null</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>Step 2: Install the package repo</h2>
+            <div class="code-terminal">
+                <div class="code-line"><span class="prompt">$ </span>echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list</div>
+                <div class="code-line"><span class="prompt">$ </span>sudo apt update</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>Step 3: Install a package</h2>
+            <div class="code-terminal">
+                <div class="code-line"><span class="prompt">$ </span>sudo apt install codemeter-lite</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>
+            <a href="https://github.com/vorausrobotik/wibu-packages" target="_blank">contribute on GitHub</a> |
+            <a href="https://www.wibu.com/" target="_blank">WIBU-SYSTEMS AG</a> |
+            <a href="https://vorausrobotik.com/" target="_blank">voraus robotik GmbH</a>
+        </p>
+    </footer>
+</body>
+</html>
