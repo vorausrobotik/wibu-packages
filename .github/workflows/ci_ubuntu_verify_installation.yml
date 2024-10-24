@@ -3,9 +3,12 @@ name: CI ubuntu verify installation
   workflow_call: null
 jobs:
   fetch_installations:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     outputs:
       cm_versions: ${{ steps.extract-versions.outputs.cm_versions }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
     steps:
       - name: Checkout (GitHub)
         uses: actions/checkout@v4
@@ -31,10 +34,11 @@ jobs:
           versions=$(cat versions.txt | jq -R -s -c 'split("\n") | map(select(. != ""))')
           echo "cm_versions=$versions" >> $GITHUB_OUTPUT
   package_is_installable:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     needs: fetch_installations
     strategy:
       matrix:
+        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
         version: ${{ fromJson(needs.fetch_installations.outputs.cm_versions) }}
     steps:
       - name: Checkout (GitHub)
