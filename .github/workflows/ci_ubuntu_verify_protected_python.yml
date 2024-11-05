@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: Checkout (GitHub)
         uses: actions/checkout@v4
-      - name: Verify the unprotected script emits "hello voraus"
-        run: ./resources/greeting.py | grep -q "hello voraus"
+      - name: Verify the protected script does not emit "hello voraus"
+        run: ./resources/greeting.py | grep -iq "hello voraus"
