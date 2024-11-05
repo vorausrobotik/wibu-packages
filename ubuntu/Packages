@@ -1,3 +1,27 @@
+Package: axprotector
+Version: 11.50.6539.500
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 34235
+Depends: libc6 (>= 2.27), libgcc1 (>= 1:4.2), codemeter | codemeter-lite | wkrt-lin (>= 5.10.501)
+Suggests: codemeter, wkrt-lin, default-jre
+Conflicts: axprotector, axprotector64
+Replaces: axprotector, axprotector64
+Provides: axprotector, axprotector64
+Filename: ./axprotector_11.50.6539.500_amd64.deb
+Size: 12902626
+MD5sum: c059bad8a7f7fb7e085409c9fbb98cd2
+SHA1: 652a3c0e21dbe05640dc568536f03ee449d6109a
+SHA256: 02d596d6377207d0e31b117aab2768a87b35bfcc4ddd16ea5c65e44ad61d2a79
+Section: non-free/libs
+Priority: extra
+Description: AxProtector RunTime support
+ Contains support for AxProtector/Java by WIBU-SYSTEMS and support
+ devices from www.wibu.com.
+ .
+ This package is required if you want to run Java applications that are
+ protected by AxProtector/Java.
+
 Package: codemeter-lite
 Source: codemeter
 Version: 7.40.5001.502
