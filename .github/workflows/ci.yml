@@ -11,3 +11,5 @@ jobs:
     uses: ./.github/workflows/ci_ubuntu_verify_repo.yml
   ubuntu_verify_installation:
     uses: ./.github/workflows/ci_ubuntu_verify_installation.yml
+  ubuntu_verify_protected_python:
+    uses: ./.github/workflows/ci_ubuntu_verify_protected_python.yml

@@ -1,0 +1,14 @@
+name: CI ubuntu verify protected python
+'on':
+  workflow_call: null
+jobs:
+  python_script_is_protected:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v4
+      - name: Verify the unprotected script emits "hello voraus"
+        run: ./resources/greeting.py | grep -q "hello voraus"
