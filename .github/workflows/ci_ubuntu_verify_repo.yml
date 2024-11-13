@@ -53,7 +53,7 @@ jobs:
           done
         working-directory: ./ubuntu/
       - name: Try to import the pubkey
-        run: gpg --import burfeind_jan-niklas.gpg
+        run: gpg --import wibu-packages-maintainers.gpg
         working-directory: ./ubuntu/
       - name: Verify Release.gpg
         run: gpg --verify Release.gpg Release

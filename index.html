@@ -76,14 +76,14 @@
         <div class="step">
             <h2>Step 1: Install the maintainers signing key</h2>
             <div class="code-terminal">
-                <div class="code-line"><span class="prompt">$ </span>curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg > /dev/null</div>
+                <div class="code-line"><span class="prompt">$ </span>curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/wibu-packages-maintainers.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg > /dev/null</div>
             </div>
         </div>
 
         <div class="step">
             <h2>Step 2: Install the package repo</h2>
             <div class="code-terminal">
-                <div class="code-line"><span class="prompt">$ </span>echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list</div>
+                <div class="code-line"><span class="prompt">$ </span>echo "deb [signed-by=/etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list</div>
                 <div class="code-line"><span class="prompt">$ </span>sudo apt update</div>
             </div>
         </div>
