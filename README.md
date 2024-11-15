@@ -13,13 +13,13 @@ our customers, free of charge[^KB-0336].
 At first the maintainers publickey should be installed as trusted for `apt` packages like this:
 
 ```console
-curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg > /dev/null
+curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/wibu-packages-maintainers.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg > /dev/null
 ```
 
 Afterwards this repo can be added to the `apt` package sources:
 
 ```console
-echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
+echo "deb [signed-by=/etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
 ```
 
 At this point the package manager can update its sources and be used to install e.g. `codemeter-lite`.
@@ -53,8 +53,8 @@ python -m http.server 8080
 While in another terminal, the installation of both the public key and the sources list can take place:
 
 ```bash
-curl -s --compressed http://localhost:8080/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
-echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
+curl -s --compressed http://localhost:8080/wibu-packages-maintainers.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg
+echo "deb [signed-by=/etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
 sudo apt-get update
 ```
 

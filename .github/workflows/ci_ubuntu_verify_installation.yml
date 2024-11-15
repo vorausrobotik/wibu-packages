@@ -16,9 +16,9 @@ jobs:
         run: nohup python3 -m http.server 8080 &
         working-directory: ./ubuntu/
       - name: Install maintainer publickey
-        run: curl -s --compressed http://localhost:8080/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
+        run: curl -s --compressed http://localhost:8080/wibu-packages-maintainers.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg
       - name: Add local repo to APT sources
-        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
+        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
       - name: update apt
         run: sudo apt-get update
       - name: Get available versions of c-lite
@@ -47,9 +47,9 @@ jobs:
         run: nohup python3 -m http.server 8080 &
         working-directory: ./ubuntu/
       - name: Install maintainer publickey
-        run: curl -s --compressed http://localhost:8080/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
+        run: curl -s --compressed http://localhost:8080/wibu-packages-maintainers.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg
       - name: Add local repo to APT sources
-        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
+        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg] http://localhost:8080 ./" | sudo tee /etc/apt/sources.list.d/localrepo.list
       - name: Update apt
         run: sudo apt-get update
       - name: Install codemeter-lite in version ${{ matrix.version }}

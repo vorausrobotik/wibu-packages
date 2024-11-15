@@ -12,9 +12,9 @@ jobs:
       cm_versions: ${{ steps.extract-versions.outputs.cm_versions }}
     steps:
       - name: Install maintainer publickey
-        run: curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
+        run: curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/wibu-packages-maintainers.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg
       - name: Add local repo to APT sources
-        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
+        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
       - name: update apt
         run: sudo apt-get update
       - name: Get available versions of c-lite
@@ -35,9 +35,9 @@ jobs:
         version: ${{ fromJson(needs.fetch_installations_externally.outputs.cm_versions) }}
     steps:
       - name: Install maintainer publickey
-        run: curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/burfeind_jan-niklas.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg
+        run: curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/wibu-packages-maintainers.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg
       - name: Add local repo to APT sources
-        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/burfeind_jan-niklas.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
+        run: echo "deb [signed-by=/etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list
       - name: Update apt
         run: sudo apt-get update
       - name: Install codemeter-lite in version ${{ matrix.version }}
