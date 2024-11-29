@@ -28,6 +28,9 @@ sudo apt update
 sudo apt install codemeter-lite
 ```
 
+> [!INFO]
+> Another possible package to install is `axprotector`.
+
 From this point on the package receives updates upon regular `apt upgrade` calls.
 
 ## License
