@@ -11,6 +11,10 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y debsig-verify
+      - name: Allow weak digest algos
+        run: |
+          sudo mkdir -p /etc/gnupg
+          echo "allow-weak-digest-algos" | sudo tee -a /etc/gnupg/gpg.conf
       - name: Create debsig directory structures
         run: |
           sudo mkdir -p /etc/debsig/policies/5FCB7AB40CC62A25
