@@ -8,7 +8,7 @@ jobs:
       cm_versions: ${{ steps.extract-versions.outputs.cm_versions }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
+        os: [ubuntu-22.04, ubuntu-24.04]
     steps:
       - name: Checkout (GitHub)
         uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
     needs: fetch_installations
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
+        os: [ubuntu-22.04, ubuntu-24.04]
         version: ${{ fromJson(needs.fetch_installations.outputs.cm_versions) }}
     steps:
       - name: Checkout (GitHub)
