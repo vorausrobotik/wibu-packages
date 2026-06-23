@@ -62,5 +62,10 @@ jobs:
         run: |
           actual=$(cmu --version | awk '/^ cmu:/{print $2; exit}')
           dpkg --compare-versions "$actual" eq '${{ matrix.version }}'
-      - name: Verify codemeter service is running as daemon user
-        run: systemctl show -pUser codemeter.service | grep -qx User=daemon
+      - name: Verify codemeter service is running as expected user
+        run: |
+          if dpkg --compare-versions '${{ matrix.version }}' ge '9.0'; then
+            systemctl show -pUser codemeter.service | grep -qx User=codemeter-backend-classic
+          else
+            systemctl show -pUser codemeter.service | grep -qx User=daemon
+          fi
