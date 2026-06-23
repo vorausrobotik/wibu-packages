@@ -94,6 +94,78 @@ Description: AxProtector RunTime support
  This package is required if you want to run Java applications that are
  protected by AxProtector/Java.
 
+Package: axprotector
+Version: 11.70.7141.503
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 36611
+Depends: libc6 (>= 2.27), codemeter | codemeter-lite | wkrt-lin (>= 5.10.501)
+Suggests: codemeter, wkrt-lin, default-jre
+Conflicts: axprotector, axprotector64
+Replaces: axprotector, axprotector64
+Provides: axprotector, axprotector64
+Filename: ./axprotector_11.70.7141.503_amd64.deb
+Size: 14180798
+MD5sum: 8d9af3c34b52f6f6030dc630c4bba36e
+SHA1: 67cfe2838650e2efedc6f3f0ca2ad518a0ab4be9
+SHA256: 7bba5e85c61dd63eceba4d7e9d27d17e2772d880e888d69573defd9b65e51e87
+Section: non-free/libs
+Priority: extra
+Description: AxProtector RunTime support
+ Contains support for AxProtector/Java by WIBU-SYSTEMS and support
+ devices from www.wibu.com.
+ .
+ This package is required if you want to run Java applications that are
+ protected by AxProtector/Java.
+
+Package: axprotector
+Version: 11.70.7154.505
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 36478
+Depends: libc6 (>= 2.25), codemeter | codemeter-lite | wkrt-lin (>= 5.10.501)
+Suggests: codemeter, wkrt-lin, default-jre
+Conflicts: axprotector, axprotector64
+Replaces: axprotector, axprotector64
+Provides: axprotector, axprotector64
+Filename: ./axprotector_11.70.7154.505_amd64.deb
+Size: 14120474
+MD5sum: 96187859e9c538c2b9fd19d62cb72abe
+SHA1: 789641f821a63f8584197ac6d5f8581836b12729
+SHA256: 265e8f7b96921508b56ab1dbb8c87ca42e8a4f953661c4bf30ae820f693905d7
+Section: non-free/libs
+Priority: extra
+Description: AxProtector RunTime support
+ Contains support for AxProtector/Java by WIBU-SYSTEMS and support
+ devices from www.wibu.com.
+ .
+ This package is required if you want to run Java applications that are
+ protected by AxProtector/Java.
+
+Package: axprotector
+Version: 11.80.8031.500
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 43963
+Depends: libc6 (>= 2.27), codemeter | codemeter-lite | wkrt-lin (>= 5.10.501)
+Suggests: codemeter, wkrt-lin, default-jre
+Conflicts: axprotector, axprotector64
+Replaces: axprotector, axprotector64
+Provides: axprotector, axprotector64
+Filename: ./axprotector_11.80.8031.500_amd64.deb
+Size: 21230774
+MD5sum: 5453306cd9791735981ec3423775f5c2
+SHA1: 5a22943dd265ac00cb806ec8dcbd6d84002c4136
+SHA256: f53fc39c5f6ff812524709d6c7908b73729d47754cf9b2c1dc4a283765d46535
+Section: non-free/libs
+Priority: extra
+Description: AxProtector RunTime support
+ Contains support for AxProtector/Java by WIBU-SYSTEMS and support
+ devices from www.wibu.com.
+ .
+ This package is required if you want to run Java applications that are
+ protected by AxProtector/Java.
+
 Package: codemeter
 Version: 8.40.7131.502
 Architecture: amd64
@@ -109,6 +181,54 @@ Size: 67990382
 MD5sum: 114c596239fe2f4d802481cc27148ca0
 SHA1: e573266a696bf0c22920f25a2d1eb1af3e1e6c2d
 SHA256: 95e9d3d5302ae5a4cdf1d69055dd8aa6ebbe103640f3e3bb8c22c1fe79fa8e3b
+Section: non-free/misc
+Priority: extra
+Description: WIBU CodeMeter runtime
+ This package contains the CodeMeter Runtime (codemeter).
+ CodeMeter provides software protection and license management.
+ .
+ More information is available in the README file.
+ Please send bugreports or comments to support@wibu.com.
+
+Package: codemeter
+Version: 8.40.7154.505
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 117427
+Depends: libc6 (>= 2.27), libfontconfig1 (>= 2.12), libfreetype6 (>= 2.6), libgl1, libice6 (>= 1:1.0.0), libsm6, libstdc++6 (>= 4.1.1), libx11-6, libx11-xcb1, libxcb-glx0, libxcb-icccm4 (>= 0.4.1), libxcb-image0 (>= 0.2.1), libxcb-keysyms1 (>= 0.4.0), libxcb-randr0 (>= 1.3), libxcb-render-util0, libxcb-render0, libxcb-shape0, libxcb-shm0 (>= 1.10), libxcb-sync1, libxcb-xfixes0, libxcb-xinerama0, libxcb-xkb1, libxcb1 (>= 1.8), libxext6, libxkbcommon-x11-0 (>= 0.5.0), libxkbcommon0 (>= 0.5.0), lsb-base (>= 3.0-6), procps
+Recommends: udev, libusb-1.0-0
+Conflicts: codemeter-lite, codemeter64, codemeter64-lite
+Replaces: codemeter-lite, codemeter64, codemeter64-lite
+Provides: codemeter-lite, codemeter64, codemeter64-lite
+Filename: ./codemeter_8.40.7154.505_amd64.deb
+Size: 53424862
+MD5sum: c62f62204e877998ad68f05489c483c0
+SHA1: c4afcfb684b0c143e9e6e8863118452ff1eab46c
+SHA256: aa4294d24518a2ebf0fb5f8fc1c5deea3dcd32f99c6ea2ef36399da5b6fb54d0
+Section: non-free/misc
+Priority: extra
+Description: WIBU CodeMeter runtime
+ This package contains the CodeMeter Runtime (codemeter).
+ CodeMeter provides software protection and license management.
+ .
+ More information is available in the README file.
+ Please send bugreports or comments to support@wibu.com.
+
+Package: codemeter
+Version: 9.0.8031.500
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 178696
+Depends: libc6 (>= 2.27), libfontconfig1 (>= 2.12), libfreetype6 (>= 2.6), libgl1, libice6 (>= 1:1.0.0), libsm6, libstdc++6 (>= 4.1.1), libx11-6, libx11-xcb1, libxcb-glx0, libxcb-icccm4 (>= 0.4.1), libxcb-image0 (>= 0.2.1), libxcb-keysyms1 (>= 0.4.0), libxcb-randr0 (>= 1.3), libxcb-render-util0, libxcb-render0, libxcb-shape0, libxcb-shm0 (>= 1.10), libxcb-sync1, libxcb-xfixes0, libxcb-xinerama0, libxcb-xkb1, libxcb1 (>= 1.8), libxext6, libxkbcommon-x11-0 (>= 0.5.0), libxkbcommon0 (>= 0.5.0), lsb-base (>= 3.0-6), procps
+Recommends: udev, libusb-1.0-0, systemd
+Conflicts: codemeter-lite, codemeter64, codemeter64-lite
+Replaces: codemeter-lite, codemeter64, codemeter64-lite
+Provides: codemeter-lite, codemeter64, codemeter64-lite
+Filename: ./codemeter_9.0.8031.500_amd64.deb
+Size: 83392738
+MD5sum: 6fb9065f1b9c4ab7db27fbacd42b225e
+SHA1: fc429ade89db0ea54b167bd32a91414b92cc69a4
+SHA256: c80ff8909f132e48ecf84eaa9a96be3497bb71c9efdb6b81d996b84f0492ffb6
 Section: non-free/misc
 Priority: extra
 Description: WIBU CodeMeter runtime
@@ -334,6 +454,81 @@ Size: 34937054
 MD5sum: f1ec35a08e39e2fa8b01029c234fb58e
 SHA1: b493f00ad018a85a9665690a2454d0ca1ac2e58c
 SHA256: 60572f2980f8c0d2d6da1d9536c325b400b3fb5894b9c627db037a90844432dd
+Section: non-free/misc
+Priority: extra
+Description: WIBU CodeMeter minimal runtime
+ This package contains the CodeMeter minimal Runtime (codemeter).
+ CodeMeter provides software protection and license management.
+ .
+ More information is available in the README file.
+ Please send bugreports or comments to support@wibu.com.
+
+Package: codemeter-lite
+Source: codemeter
+Version: 8.40.7141.503
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 73794
+Depends: libc6 (>= 2.27), libstdc++6 (>= 4.1.1), lsb-base (>= 3.0-6), procps
+Recommends: udev, libusb-1.0-0
+Conflicts: codemeter, codemeter64, codemeter64-lite
+Replaces: codemeter, codemeter64, codemeter64-lite
+Provides: codemeter64-lite
+Filename: ./codemeter-lite_8.40.7141.503_amd64.deb
+Size: 35033758
+MD5sum: 0e878b7dfc4cf1ad5bcba7cb936b15f8
+SHA1: fba983fa6a5c3495c7346e679ca8ecb22157fd4d
+SHA256: f2c5e83e48c4b79b1612b3b50a4105d5073e0d5b53720f644afffcb0b36e65be
+Section: non-free/misc
+Priority: extra
+Description: WIBU CodeMeter minimal runtime
+ This package contains the CodeMeter minimal Runtime (codemeter).
+ CodeMeter provides software protection and license management.
+ .
+ More information is available in the README file.
+ Please send bugreports or comments to support@wibu.com.
+
+Package: codemeter-lite
+Source: codemeter
+Version: 8.40.7154.505
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 73540
+Depends: libc6 (>= 2.27), libstdc++6 (>= 4.1.1), lsb-base (>= 3.0-6), procps
+Recommends: udev, libusb-1.0-0
+Conflicts: codemeter, codemeter64, codemeter64-lite
+Replaces: codemeter, codemeter64, codemeter64-lite
+Provides: codemeter64-lite
+Filename: ./codemeter-lite_8.40.7154.505_amd64.deb
+Size: 34847084
+MD5sum: 1d3a807b73a230d3fa0402c49909a141
+SHA1: 2397f88b316b93d4ae628dc898ae0a9ae090517c
+SHA256: 94391fd32ac7298f3bdbecbf2963f99eb2c050fdd129d04cc1fac9f46dd989ea
+Section: non-free/misc
+Priority: extra
+Description: WIBU CodeMeter minimal runtime
+ This package contains the CodeMeter minimal Runtime (codemeter).
+ CodeMeter provides software protection and license management.
+ .
+ More information is available in the README file.
+ Please send bugreports or comments to support@wibu.com.
+
+Package: codemeter-lite
+Source: codemeter
+Version: 9.0.8031.500
+Architecture: amd64
+Maintainer: WIBU-SYSTEMS AG <support@wibu.com>
+Installed-Size: 124096
+Depends: libc6 (>= 2.27), libstdc++6 (>= 4.1.1), lsb-base (>= 3.0-6), procps
+Recommends: udev, libusb-1.0-0, systemd
+Conflicts: codemeter, codemeter64, codemeter64-lite
+Replaces: codemeter, codemeter64, codemeter64-lite
+Provides: codemeter64-lite
+Filename: ./codemeter-lite_9.0.8031.500_amd64.deb
+Size: 55095476
+MD5sum: d4b02085108f19ef60ce5a3e63721349
+SHA1: 7462cfe6a3fd7d05b0dc420f154a0add2f754352
+SHA256: 3f39de56b9980c8d07992ab765fd101d7086759fbc03317ba9fada7bad121394
 Section: non-free/misc
 Priority: extra
 Description: WIBU CodeMeter minimal runtime
