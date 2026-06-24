@@ -1,106 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>voraus wibu-packages</title>
     <style>
-        body {
-            font-family: Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .step {
-            margin-bottom: 40px;
-        }
-        .step h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .code-terminal {
-            background-color: #2d2d2d;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: 'Courier New', monospace;
-            text-align: left;
-            display: inline-block;
-            width: 100%;
-            max-width: 540px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .code-line {
-            margin: 5px 0;
-        }
-        .prompt {
-            color: #50fa7b;
-            user-select: none;
-        }
-        footer {
-            color: #6C6C6C;
-            margin-top: 25px;
-            padding: 20px;
-            font-size: 1rem;
-        }
-        footer a {
-            color: #6C6C6C;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
+      body {
+        font-family: Roboto, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+        text-align: center;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+      .step {
+        margin-bottom: 40px;
+      }
+      .notice {
+        background-color: #fff3cd;
+        color: #664d03;
+        border: 1px solid #ffe69c;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 30px;
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .notice a {
+        color: #664d03;
+        font-weight: bold;
+      }
+      .step h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+      .code-terminal {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        text-align: left;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+        white-space: pre-wrap;
+        word-break: break-word;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .prompt {
+        color: #50fa7b;
+        user-select: none;
+      }
+      footer {
+        color: #6c6c6c;
+        margin-top: 25px;
+        padding: 20px;
+        font-size: 1rem;
+      }
+      footer a {
+        color: #6c6c6c;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>voraus wibu-packages</h1>
-        <p>This package repository provides WIBU customer runtimes in linux package manager friendly manner.</p>
-        <div class="step">
-            <h2>Step 1: Install the maintainers signing key</h2>
-            <div class="code-terminal">
-                <div class="code-line"><span class="prompt">$ </span>curl -s --compressed https://wibu-packages.vorausrobotik.com/ubuntu/wibu-packages-maintainers.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg > /dev/null</div>
-            </div>
-        </div>
+      <h1>voraus wibu-packages</h1>
+      <p>
+        WIBU customer runtimes are distributed via voraus robotik's Artifactory
+        instance.
+      </p>
+      <div class="notice">
+        The easiest way to install the runtimes is via the
+        <a
+          href="https://github.com/vorausrobotik/voraus-ipc-tools-ansible/tree/main/voraus/ipc_tools/roles/wibu_packages"
+          target="_blank"
+          >wibu_packages</a
+        >
+        role of our ansible collection, which performs the steps below for you.
+      </div>
+      <div class="step">
+        <h2>Step 1: Add the signing key</h2>
+        <pre
+          class="code-terminal"
+        ><span class="prompt">$ </span>curl -fsSL https://voraus.jfrog.io/ui/api/v1/ui/security/keyPairs/voraus-gpg/public \
+    | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/vorausrobotik.gpg</pre>
+      </div>
 
-        <div class="step">
-            <h2>Step 2: Install the package repo</h2>
-            <div class="code-terminal">
-                <div class="code-line"><span class="prompt">$ </span>echo "deb [signed-by=/etc/apt/trusted.gpg.d/wibu-packages-maintainers.gpg] https://wibu-packages.vorausrobotik.com/ubuntu/ ./" | sudo tee /etc/apt/sources.list.d/voraus-wibu.list</div>
-                <div class="code-line"><span class="prompt">$ </span>sudo apt update</div>
-            </div>
-        </div>
+      <div class="step">
+        <h2>Step 2: Add the apt source</h2>
+        <pre
+          class="code-terminal"
+        ><span class="prompt">$ </span>sudo tee /etc/apt/sources.list.d/vorausrobotik.sources > /dev/null &lt;&lt;'EOF'
+Types: deb
+URIs: https://voraus.jfrog.io/artifactory/debian
+Suites: stable
+Components: main
+Signed-By: /etc/apt/trusted.gpg.d/vorausrobotik.gpg
+EOF</pre>
+      </div>
 
-        <div class="step">
-            <h2>Step 3: Install a package</h2>
-            <div class="code-terminal">
-                <div class="code-line"><span class="prompt">$ </span>sudo apt install codemeter-lite</div>
-            </div>
-        </div>
+      <div class="step">
+        <h2>Step 3: Install packages</h2>
+        <pre class="code-terminal"><span class="prompt">$ </span>sudo apt update
+<span class="prompt">$ </span>sudo apt install codemeter-lite
+<span class="prompt">$ </span>sudo apt install axprotector</pre>
+      </div>
     </div>
     <footer>
-        <p>
-            <a href="https://github.com/vorausrobotik/wibu-packages" target="_blank">contribute on GitHub</a> |
-            <a href="https://www.wibu.com/" target="_blank">WIBU-SYSTEMS AG</a> |
-            <a href="https://vorausrobotik.com/" target="_blank">voraus robotik GmbH</a>
-        </p>
+      <p>
+        <a href="https://github.com/vorausrobotik/wibu-packages" target="_blank"
+          >Contribute on GitHub</a
+        >
+        | <a href="https://www.wibu.com/" target="_blank">WIBU-SYSTEMS AG</a> |
+        <a href="https://vorausrobotik.com/" target="_blank"
+          >voraus robotik GmbH</a
+        >
+      </p>
     </footer>
-</body>
+  </body>
 </html>
