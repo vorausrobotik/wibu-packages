@@ -1,0 +1,31 @@
+name: Nightly Artifactory installation check
+'on':
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch: null
+jobs:
+  package_is_installable_from_artifactory:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04, ubuntu-26.04]
+        package: [codemeter-lite, axprotector]
+    steps:
+      - name: Add the signing key
+        run: curl -fsSL https://voraus.jfrog.io/ui/api/v1/ui/security/keyPairs/voraus-gpg/public | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/vorausrobotik.gpg
+      - name: Add the apt source
+        run: |
+          sudo tee /etc/apt/sources.list.d/vorausrobotik.sources > /dev/null <<'EOF'
+          Types: deb
+          URIs: https://voraus.jfrog.io/artifactory/debian
+          Suites: stable
+          Components: main
+          Signed-By: /etc/apt/trusted.gpg.d/vorausrobotik.gpg
+          EOF
+      - name: Update apt
+        run: sudo apt-get update
+      - name: Install ${{ matrix.package }}
+        run: sudo apt-get install -y ${{ matrix.package }}
+      - name: Verify ${{ matrix.package }} is installed
+        run: dpkg -s ${{ matrix.package }}
