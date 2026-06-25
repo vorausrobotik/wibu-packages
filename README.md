@@ -1,4 +1,6 @@
-# wibu-packages
+# WIBU packages
+
+[![Nightly Artifactory installation check](https://github.com/vorausrobotik/wibu-packages/actions/workflows/nightly_artifactory_installable.yml/badge.svg)](https://github.com/vorausrobotik/wibu-packages/actions/workflows/nightly_artifactory_installable.yml)
 
 WIBU customer runtimes are distributed via voraus robotik's [Artifactory](https://voraus.jfrog.io) instance.
 This repository no longer hosts the package repository &mdash; it only retains two legacy `.deb` files for
